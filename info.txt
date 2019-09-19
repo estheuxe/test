@@ -1,0 +1,23 @@
+py venv (in your project folder)
+
+	$ mkdir myproject
+	$ cd myproject
+	$ python3 -m venv myvenv 
+	$ source myvenv/bin/activate
+	$ deactivate
+
+py djangoapp
+	https://docs.djangoproject.com/en/2.2/intro/tutorial01/
+	$ django-admin startproject projectname
+	$ python3 manage.py migrate
+	$ python3 manage.py runserver 1337
+	$ python3 manage.py startapp appname
+ 
+yand connect https://yandex.ru/dev/connect/directory/api/concepts/query-format-docpage/
+yand tracker https://yandex.ru/dev/connect/tracker/api/concepts/access-docpage/
+yand client  https://oauth.yandex.ru/client/11630581252b45c8b3d7459720ed2af1
+
+POST - add
+PUT - rewrite (delete and POST new)
+
+print(json.dumps(response.json(), indent=2))
