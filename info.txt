@@ -21,3 +21,8 @@ POST - add
 PUT - rewrite (delete and POST new)
 
 print(json.dumps(response.json(), indent=2))
+
+#idBoard = '5d81c5e6ecf65d36ef777b70'	# board "MyBoard"
+#idList = '5d81c5e68f079e461725ca0b'		# list  "In progress"
+
+#response = requests.request("GET", getActions.format(boardId=idBoard), params=querystring)
