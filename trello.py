@@ -73,6 +73,28 @@ def deleteCard(idList):
 	# and finally DELETE request
 	requests.request("DELETE", urlCards.format(id=idCard), params={'key':key,'token':token})
 
+def grabCard(idList):
+	cardName = str(input("Name: "))
+
+	# getting all card for names and ids
+	respL = requests.request("GET", urlL.format(id=idList), params=queryString)
+
+	for i in respL.json():
+		if i['name'] == cardName:
+			idCard = i['id']
+
+	infoCardQuery = {
+		'fields': 'name,desc',
+		'key': key,
+		'token': token
+	}
+
+	# and finally GRAB request
+	grabResp = requests.request("GET", urlCards.format(id=idCard), params=infoCardQuery)
+
+	cardName = print(grabResp.json().get('name'))
+	cardDesc = print(grabResp.json().get('desc'))
+
 if __name__ == "__main__":
 
 	queryString = {
@@ -129,5 +151,7 @@ if __name__ == "__main__":
 		putCard(idList)
 	elif action == "Delete":
 		deleteCard(idList)
+	elif action == "Grab":
+		grabCard(idList)
 	else:
 		print("wrong command")

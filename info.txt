@@ -22,7 +22,31 @@ PUT - rewrite (delete and POST new)
 
 print(json.dumps(response.json(), indent=2))
 
-#idBoard = '5d81c5e6ecf65d36ef777b70'	# board "MyBoard"
+#idBoard = '5d81c5e6ecf65d36ef777b70'		# board "MyBoard"
 #idList = '5d81c5e68f079e461725ca0b'		# list  "In progress"
 
 #response = requests.request("GET", getActions.format(boardId=idBoard), params=querystring)
+
+good guide for SQLAlchemy
+	https://lectureswww.readthedocs.io/6.www.sync/2.codding/9.databases/2.sqlalchemy/0.engine.html
+
+sql stmts
+	https://lectureswww.readthedocs.io/6.www.sync/2.codding/9.databases/2.sqlalchemy/2.sql_expressions.html
+
+Pабота с моделями в django
+https://metanit.com/python/django/5.4.php
+
+Serializers/ working with API
+	https://github.com/encode/django-rest-framework
+how to
+	https://webdevblog.ru/sozdanie-django-api-ispolzuya-django-rest-framework-apiview/
+
+HTTP methods documentation RFC
+	https://tools.ietf.org/html/rfc7231#section-4.3
+
+params = {
+	'type': yandex|trello
+}
+
+localhost:1337/auth/cards
+localhost:1337/auth/boards
