@@ -50,3 +50,14 @@ params = {
 
 localhost:1337/auth/cards
 localhost:1337/auth/boards
+
+./ngrok http 8445
+
+taskeditproject > taskedit
+
+auth > boards
+auth > lists
+auth > cards
+
+status_codesss
+https://www.django-rest-framework.org/api-guide/status-codes/
