@@ -61,3 +61,8 @@ auth > cards
 
 status_codesss
 https://www.django-rest-framework.org/api-guide/status-codes/
+
+https://www.jetbrains.com/help/youtrack/standalone/rest-api-reference.html
+
+Паттерны python
+https://refactoring.guru/ru/design-patterns/python

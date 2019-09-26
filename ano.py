@@ -13,8 +13,8 @@ idBoard = '5d81c5e6ecf65d36ef777b70'
 idCard = '5d8993701e3de35143eb39af'
 
 qs0 = {
-	'type': 'trello',
-	'id': idList,
+	'type': 'yt',
+	#'id': idList,
 }
 
 qs1 = {
@@ -41,7 +41,11 @@ qs4 = {
 	'id': '5d89ff3064665247c92d233c',
 }
 
+r = requests.request('GET', uriBoards, params={'type': 'yt'})
 
+#print(type(r))
+print(json.dumps(r.json(), indent=4))
+#print(r.json())
 '''
 idCard = '5d89fafef060437c2605a3a4'
 newCardName = 'ready-rest post edited'
@@ -58,12 +62,6 @@ response = requests.request("PUT", 'https://api.trello.com/1/cards/{id}'.format(
 print(response.status_code)
 
 '''
-
-
-
-
-
-
 # post request
 #postCard = requests.request("POST", uriCards, params=qs1)
 #print(postCard.status_code)
@@ -72,12 +70,19 @@ print(response.status_code)
 
 #print(grab)
 
-answ = requests.request("DELETE", uriCards, params=qs4)
+#answ = requests.request("DELETE", uriCards, params=qs4)
 
-print(answ.status_code)
+#print(answ.status_code)
+'''
+para = {
+	'type': 'yt',
+	'id': 'P1-4'
+}
 
 # all cards
-#getAll = requests.request("GET", uriCards, params=qs0)
+delresp = requests.request('DELETE', uriCards, params=para)
+print(delresp.status_code)
+'''
 #print(json.dumps(getAll.json(), indent=4))
 
 #print(getAll.status_code)
@@ -98,8 +103,6 @@ paramsForWH = {
 #print(answwh.status_code)
 
 #print(json.dumps(answwh.json(), indent=4))
-
-#print(json.dumps(answwh.json(), indent=2))
 
 ''' check webhooks 
 hoba = requests.request("GET", uriWH.format(token=token, key=key))

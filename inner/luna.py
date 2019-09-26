@@ -1,8 +1,13 @@
-import sys
+def switchDemo(argument):
+	switcher = {
+		1: 'jan',
+		2: 'feb',
+		3: 'march'
+	}
+	return switcher.get(argument)
 
-sys.path.append('..')
+print(switchDemo(1))
 
-import nova as j
 
-if __name__ == '__main__':
-	print(j.second_param)
+
+# https://younglinux.info/oopython/encapsulation
