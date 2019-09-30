@@ -41,7 +41,7 @@ qs4 = {
 	'id': '5d89ff3064665247c92d233c',
 }
 
-r = requests.request('GET', uriBoards, params={'type': 'yt'})
+r = requests.request('GET', uriLists, params={'type': 'yt'})
 
 #print(type(r))
 print(json.dumps(r.json(), indent=4))

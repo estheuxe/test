@@ -66,3 +66,35 @@ https://www.jetbrains.com/help/youtrack/standalone/rest-api-reference.html
 
 Паттерны python
 https://refactoring.guru/ru/design-patterns/python
+
+''' Выводит все Agile Boards с состояниями, их id & name & desc '''
+
+idOfAgileBoards = 'https://estheuxework.myjetbrains.com/youtrack/api/admin/customFieldSettings/bundles/state'
+		
+yq = {
+	'fields': 'id,name,values(id,name,description)'
+}
+
+return requests.request('GET', idOfAgileBoards, params=yq, headers=s.YT_HEADERS)
+
+
+''' Выводит все состояния определенной эджайл доски '''
+
+idOfAgileBoards = 'https://estheuxework.myjetbrains.com/youtrack/api/admin/customFieldSettings/bundles/state/{id}'
+
+yq = {
+	'fields': 'id,name,values(name,id,ordinal)'
+}
+
+return requests.request('GET', idOfAgileBoards.format(id='84-3'), params=yq, headers=s.YT_HEADERS)
+
+
+''' Выводит все эджайл доски '''
+
+idAgile = 'https://estheuxework.myjetbrains.com/youtrack/api/agiles'
+		
+yq = {
+	'fields': 'id,name'
+}
+
+return requests.request('GET', idAgile, params=yq, headers=s.YT_HEADERS)
