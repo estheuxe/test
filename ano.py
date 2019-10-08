@@ -12,102 +12,95 @@ idList = '5d81c5e68f079e461725ca0b'
 idBoard = '5d81c5e6ecf65d36ef777b70'
 idCard = '5d8993701e3de35143eb39af'
 
-qs0 = {
-	'type': 'yt',
-	#'id': idList,
-}
+idL = '85-19'
+idL1 = '85-26'
 
 qs1 = {
-	'type': 'trello',
-	'id': idList,
-	'name': 'qwertyqwerty',
-	'desc': 'dddddddd',
+	'type': 'yt',
+	'id': '84-2',
+	'name': 'task from ano.py',
+	'desc': 'so description too',
+}
+YT_HEADERS = {
+    'Authorization': 'Bearer perm:cm9vdA==.NDYtMQ==.UQ5xwQt0IXO6fZUB5hGtRS1DulxQSN',
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Cache-Control': 'no-cache'
 }
 
-qs2 = {
-	'type': 'trello',
-	'id': idBoard,
-}
+urishka = 'https://estheuxework.myjetbrains.com/youtrack/api/admin/customFieldSettings/bundles/state'
+urasd = 'https://estheuxework.myjetbrains.com/youtrack/api/admin/projects'
+
+#r = requests.request('GET', uriBoards, params={'type': 'trello'})
+#r = requests.request('GET', uriBoards, params={'type': 'yt'})
+#r = requests.request('GET', uriLists, params={'type': 'trello', 'id': idBoard})
+#r = requests.request('GET', uriLists, params={'type': 'yt', 'id': '84-2'})
+#r = requests.request('GET', uriCards, params={'type': 'trello', 'id': idList})
+r = requests.request('GET', uriCards, params={'type': 'yt', 'id': idL})
 
 qs3 = {
 	'type': 'trello',
-	'id': '5d898c0a7793ec665a0d6ac0', #id of card
-	'name': 'from ano.py NAME',
-	'desc': 'from ano.py DESC',
+	'id': idList,#'85-19', #id of card
+	#'project': '0-3',
+	'name': 'Foo',
+	'desc': 'Bar',
 }
 
-qs4 = {
+qs33 = {
 	'type': 'trello',
-	'id': '5d89ff3064665247c92d233c',
+	'id': '5d9af0ae809126670c45dbfe',#'85-19', #id of card
+	#'project': '0-3',
+	'name': 'updated Foo',
+	'desc': 'updated Bar',
 }
 
-r = requests.request('GET', uriLists, params={'type': 'yt'})
+qss = {
+	'type': 'yt',
+	'id': '2-33',
+	'name': 'new Carribean task edited by put request',
+	'desc': 'updated Yo-ho-ho',
+}
+
+#r = requests.request('PUT', uriCards, params=qs33)
+
+
+#r = requests.request('GET', urasd, headers=YT_HEADERS)
 
 #print(type(r))
 print(json.dumps(r.json(), indent=4))
 #print(r.json())
-'''
-idCard = '5d89fafef060437c2605a3a4'
-newCardName = 'ready-rest post edited'
-newCardDesc = 'edited desc for r-r post'
-putTrelloCardQuery = {
-	'name': newCardName,
-	'desc': newCardDesc,
-	'key': key,
-	'token': token
-}
 
-response = requests.request("PUT", 'https://api.trello.com/1/cards/{id}'.format(id=idCard), params=putTrelloCardQuery)
 
-print(response.status_code)
+#return Response(response, status=status.HTTP_200_OK)
 
-'''
-# post request
-#postCard = requests.request("POST", uriCards, params=qs1)
-#print(postCard.status_code)
+'''	query strings
 
-#grab = requests.request("GRAB", uriCards, params=qs4)
+			qs0 = {
+				'type': 'yt',
+				#'id': idList,
+			}
 
-#print(grab)
+			qs1 = {
+				'type': 'trello',
+				'id': idList,
+				'name': 'qwertyqwerty',
+				'desc': 'dddddddd',
+			}
 
-#answ = requests.request("DELETE", uriCards, params=qs4)
+			qs2 = {
+				'type': 'trello',
+				'id': idBoard,
+			}
 
-#print(answ.status_code)
-'''
-para = {
-	'type': 'yt',
-	'id': 'P1-4'
-}
+			qs3 = {
+				'type': 'trello',
+				'id': '5d898c0a7793ec665a0d6ac0', #id of card
+				'name': 'from ano.py NAME',
+				'desc': 'from ano.py DESC',
+			}
 
-# all cards
-delresp = requests.request('DELETE', uriCards, params=para)
-print(delresp.status_code)
-'''
-#print(json.dumps(getAll.json(), indent=4))
-
-#print(getAll.status_code)
-#response = requests.request("PUT", uriCards, params=qs3)
-
-'''
-uriWH = "https://api.trello.com/1/tokens/{token}/webhooks/?key={key}"
-
-paramsForWH = {
-	#'callbackURL': 'http://yandex.ru',
-	'callbackURL': 'https://449c6702.ngrok.io/auth/',
-	'idModel': idList,
-	'description': 'First Webhook',
-}
-'''
-#answwh = requests.request("DELETE", uriWH.format(token=token, key=key), params=paramsForWH)
-
-#print(answwh.status_code)
-
-#print(json.dumps(answwh.json(), indent=4))
-
-''' check webhooks 
-hoba = requests.request("GET", uriWH.format(token=token, key=key))
-
-print(hoba.status_code)
-
-print(json.dumps(hoba.json(), indent=2))
+			qs4 = {
+				'type': 'trello',
+				'id': '5d89ff3064665247c92d233c',
+			}
 '''

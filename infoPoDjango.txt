@@ -1,0 +1,124 @@
+POSTGRES COMMANDS
+postgres=> \dt                              # shows all tables
+postgres=> \d table_name                    # shows all columns of table
+postgres=> ALTER TABLE table_name 
+postgres=> DROP COLUMN column_name CASCADE;
+postgres=> \l                               # all databases
+
+
+Order of handling through dot
+    Поиск в словаре (т.е., foo["bar"]);
+
+    Поиск атрибута (т.е., foo.bar);
+
+    Вызов метода (т.е., foo.bar());
+
+    Поиск в списке по индексу (т.е., foo[2]). 
+
+def delete(self):
+# Delete the account
+delete.alters_data = True 	# если обозначить метод этой строкой, то
+							# в шаблоне не сработает account.delete
+
+{% for athlete in athlete_list %}
+    <p>{{ athlete.name }}</p>
+{% empty %}
+    <p>There are no athletes. Only computer programmers.</p>
+{% endfor %}
+
+Во время каждой итерации {% for %} вы получаете доступ к шаблонной переменной forloop
+forloop.counter
+forloop.counter0
+forloop.revcounter
+forloop.revcounter0
+forloop.first
+forloop.last
+forloop.parentloop
+
+python3 manage.py shell
+python3 manage.py runserver
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py migrate --run-syncdb
+% if migrations folder doesn't found %
+	python3 manage.py makemigrations app_name
+python3 manage.py createsuperuser
+
+Чтобы видеть таблицу:
+admin.py:
+	> from .models import Article
+	> admin.site.register(Article)
+
+MODELS____________________________________________________________________________
+1. Создаем приложение (!)
+2. Определяем классы модели
+3. Активируем модели в INSTALLED_APPS добавляем приложение 'app'
+4. python3 manage.py makemigrations
+5. python3 manage.py migrate
+
+Можно протестить через python3 manage.py shell
+> from appname.models import Classname
+> first = Classname(name='Name',subname='Subname')
+> first.save()
+> Classname.objects.all()
+
+if without .save
+    first = Classname.objects.create(attrs)
+
+В моделях, для удобства, можно добавить def __str__(self): return self.name
+
+_________ Работа с записями моделей ____________________________________________________
+
+Выборка объектов 
+    Classname.objects.all()
+
+Фильтрация
+    Classname.objects.filter(name='Name') # one
+    Classname.objects.filter(name='Name', country='USA') # many
+
+    in name 'Express' filter command:
+        Classname.objects.filter(name__contains='press')
+    
+    more: 
+        https://djbook.ru/apc.html
+
+Получение одного объекта
+    Classname.objects.get(name='Name')
+
+Сортировка данных
+    Classname.objects.order_by('name')
+    Classname.objects.order_by('-name') # Обратная сортировка
+    Classname.objects.order_by('name','country')    # if nameS equals order_by('country')
+
+    Но обычно сортировку определяют жёстко в классе модели 
+    class Meta:
+        ordering = ['name']
+
+Цепочка запросов 
+    Classname.objects.filter(contry='USA').order_by('-name')
+
+Выборка части результатов
+    Classname.objects.all()[0]  # or Classname.objects.order_by('name')[0]  # whatever
+    Выборка набора
+        Classname.objects.order_by('name')[:2]  # Negative indexing is not supported
+
+Изменение множества объектов одним запросом 
+    a = Classname.objects.get(name='Name')
+    a.name = 'New Name'
+    a.save()
+
+Update записи по выбранным атрибутам
+    Classname.objects.filter(id=1).update(name='New name')
+
+Изменение множества записей по выбранным атрибутам
+    Classname.objects.all().filter(country='U.S.A').update(country='USA')
+
+Удаление объектов
+    Одного
+        a = Classname.objects.get(name="O'Reilly")
+        a.delete()
+    Несколько 
+        Classname.objects.filter(country='USA').delete()
+        or
+        Classname.objects.all().delete()
+        etc.

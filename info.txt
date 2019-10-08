@@ -1,10 +1,16 @@
-py venv (in your project folder)
-
+Виртуальное окружение
 	$ mkdir myproject
 	$ cd myproject
 	$ python3 -m venv myvenv 
 	$ source myvenv/bin/activate
 	$ deactivate
+
+Для сохранения листа данного окружения: 
+	$ pip3 freeze > requirements.txt
+Установить:
+	$ pip3 install -r requirements.txt
+Посмотреть что установлено в окружении
+	$ pip3 freeze
 
 py djangoapp
 	https://docs.djangoproject.com/en/2.2/intro/tutorial01/
@@ -12,13 +18,6 @@ py djangoapp
 	$ python3 manage.py migrate
 	$ python3 manage.py runserver 1337
 	$ python3 manage.py startapp appname
- 
-yand connect https://yandex.ru/dev/connect/directory/api/concepts/query-format-docpage/
-yand tracker https://yandex.ru/dev/connect/tracker/api/concepts/access-docpage/
-yand client  https://oauth.yandex.ru/client/11630581252b45c8b3d7459720ed2af1
-
-POST - add
-PUT - rewrite (delete and POST new)
 
 print(json.dumps(response.json(), indent=2))
 
@@ -34,7 +33,7 @@ sql stmts
 	https://lectureswww.readthedocs.io/6.www.sync/2.codding/9.databases/2.sqlalchemy/2.sql_expressions.html
 
 Pабота с моделями в django
-https://metanit.com/python/django/5.4.php
+	https://metanit.com/python/django/5.4.php
 
 Serializers/ working with API
 	https://github.com/encode/django-rest-framework
@@ -60,41 +59,61 @@ auth > lists
 auth > cards
 
 status_codesss
-https://www.django-rest-framework.org/api-guide/status-codes/
+	https://www.django-rest-framework.org/api-guide/status-codes/
 
-https://www.jetbrains.com/help/youtrack/standalone/rest-api-reference.html
+	https://www.jetbrains.com/help/youtrack/standalone/rest-api-reference.html
 
 Паттерны python
-https://refactoring.guru/ru/design-patterns/python
+	https://refactoring.guru/ru/design-patterns/python
 
+
+____________________________________________________________________________________________________________
 ''' Выводит все Agile Boards с состояниями, их id & name & desc '''
 
 idOfAgileBoards = 'https://estheuxework.myjetbrains.com/youtrack/api/admin/customFieldSettings/bundles/state'
-		
 yq = {
 	'fields': 'id,name,values(id,name,description)'
 }
-
 return requests.request('GET', idOfAgileBoards, params=yq, headers=s.YT_HEADERS)
 
 
 ''' Выводит все состояния определенной эджайл доски '''
 
 idOfAgileBoards = 'https://estheuxework.myjetbrains.com/youtrack/api/admin/customFieldSettings/bundles/state/{id}'
-
 yq = {
 	'fields': 'id,name,values(name,id,ordinal)'
 }
-
 return requests.request('GET', idOfAgileBoards.format(id='84-3'), params=yq, headers=s.YT_HEADERS)
 
 
 ''' Выводит все эджайл доски '''
 
 idAgile = 'https://estheuxework.myjetbrains.com/youtrack/api/agiles'
-		
 yq = {
 	'fields': 'id,name'
 }
-
 return requests.request('GET', idAgile, params=yq, headers=s.YT_HEADERS)
+
+
+''' WEBHOOKS__________________________________________________________________________________
+setWebhook = "https://api.trello.com/1/tokens/{token}/webhooks/?key={key}"
+
+paramsForWH = {
+	'callbackURL': '',
+	'idModel': idList,
+	'description': 'First Webhook',
+}
+'''
+
+# a = requests.request("DELETE", setWebhook.format(token=, key=), params=paramsForWH)
+
+# print(a.status_code)
+# print(json.dumps(a.json(), indent=4))
+
+''' check webhooks 
+hoba = requests.request("GET", setWebhook.format(token=, key=))
+
+print(hoba.status_code)
+
+print(json.dumps(hoba.json(), indent=2))
+'''
